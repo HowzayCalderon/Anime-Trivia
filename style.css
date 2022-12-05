@@ -40,6 +40,10 @@ h1{
 
 .Next{
     width: 100px;
+    border-radius: 10px;
+    font-family: 'Fascinate' cursive;
+    background-color: rgb(34, 111, 166);
+    color: white;
 }
 .nextBox{
     width: 50vw;
@@ -62,6 +66,7 @@ h1{
 .btn{
     border-radius: 10px;
     padding: 10px;
+    background-color:  rgb(34, 111, 166);
 }
 @keyframes shaker {
     0%, 10%{
