@@ -50,6 +50,10 @@ let questions = [
     {
         que: "Does Asta from Black Clover have any magic ability?",
         answer: 'no'
+    },
+    {
+        que: "Which two people were in possesion of the Colossal Titan?",
+        answer: "armin, bertholdt"
     }
 ]
 // reference for NEXT BUTTON
@@ -144,12 +148,16 @@ window.addEventListener('load', function(){
             increasePoints()  
             gamePoints.innerHTML = `${player.points}`  
             btn.style.display = 'none'  
+        }else if(mainQuestion.innerHTML === questions[8].que && input.value.toLowerCase() === questions[8].answer){
+            questionBox.style.backgroundColor = 'green'
+            increasePoints()  
+            gamePoints.innerHTML = `${player.points}`  
+            btn.style.display = 'none'  
         }else{
             questionBox.style.backgroundColor = 'red'
             decreaseLives()
-            console.log(player.lives)
             gameLives.innerHTML = `<i class="bi bi-heart-fill"></i>${player.lives}`
-
+            btn.style.display = 'none'
         };
         if(player.points >= 25){
             youWon.style.display = 'flex'
