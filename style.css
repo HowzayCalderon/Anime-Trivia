@@ -1,0 +1,153 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fascinate&display=swap');
+
+body{
+    background-color: #317773;
+}
+h1{
+    font-family: 'Fascinate', cursive;
+    font-size: 90px;
+}
+.pointsLivesBox p{
+    font-family: 'Fascinate', cursive;
+    font-size: 30px;
+}
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
+.questionBox{
+    border: solid black 3px;
+    height: 40vh;
+    width: 50vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 20px;
+    background-color: #E2D1F9;
+    color: black;
+}
+.questionBox p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+.Next{
+    width: 100px;
+}
+.nextBox{
+    width: 50vw;
+}
+
+.pointsLivesBox {
+    border-radius: 20px;
+    width: 100vw;
+    margin-bottom: 100px;
+    height: 10vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+#answer{
+    border-radius: 15px 15px 0px 0px;
+    padding: 10px;
+}
+.btn{
+    border-radius: 10px;
+    padding: 10px;
+}
+@keyframes shaker {
+    0%, 10%{
+        transform: rotate(0);
+    }
+    15% {
+        transform: rotate(-30deg);
+    }
+    20% {
+        transform: rotate(20deg);
+    }
+    25% {
+        transform: rotate(-20deg);
+    }
+    30%{
+        transform: rotate(12deg);
+    }
+    35%{
+        transform: rotate(-8deg);
+    }
+    40%, 100%{
+        transform: rotate(0);
+    }
+}
+@keyframes colors {
+    0%{
+        color: rgb(0, 0, 139);
+    }
+    60%{
+        color: rgb(0, 71, 171);
+    }
+    65%,90%{
+        color: rgb(65, 105, 225);
+    }
+    100%{
+        color: rgb(111, 143, 175)
+    }
+}
+
+.win{
+    font-size: 100px;
+    animation-name: huge, colors;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: linear, alternate;
+    display: none;
+}
+@keyframes huge{
+    0%{
+        transform: scale(1.5);
+    }
+    20%{
+        transform: scale(1);
+    }
+    30%{
+        transform: scale(1.5);
+    }
+    50%{
+        transform: scale(1);
+    }
+    70%{
+        transform: scale(1.5);
+    }
+    90%{
+        transform: scale(1)
+    }
+    100%{
+        transform: scale(1.5);
+    }
+}
+@keyframes blood{
+    0%{color:rgb(136, 8, 8) ;}
+    60%{color:rgb(196, 30, 58) ;}
+    80%{color: rgb(210, 43, 43);}
+    100%{color: rgb(222, 49, 99);}
+}
+.lose{
+    font-size: 100px;
+    animation-name: shaker, blood;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    display: none;
+}
+#answer{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: 20px;
+}
