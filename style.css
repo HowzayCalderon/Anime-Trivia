@@ -40,10 +40,11 @@ h1{
 
 .Next{
     width: 100px;
+    padding: 9px;
+    font-size: 20px;
     border-radius: 10px;
     font-family: 'Fascinate' cursive;
     background-color: rgb(34, 111, 166);
-    color: white;
 }
 .nextBox{
     width: 50vw;
@@ -60,12 +61,13 @@ h1{
     flex-direction: column;
 }
 #answer{
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 10px;
     padding: 10px;
 }
 .btn{
     border-radius: 10px;
-    padding: 10px;
+    font-size: 20px;
+    padding: 9px;
     background-color:  rgb(34, 111, 166);
 }
 @keyframes shaker {
