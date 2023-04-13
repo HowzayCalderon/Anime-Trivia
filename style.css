@@ -69,6 +69,29 @@ h1{
     font-size: 20px;
     padding: 9px;
     background-color:  rgb(34, 111, 166);
+    border: 1px solid rgb(34, 111, 166);
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+}
+
+.btn-correct{
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 9px;
+    border: 1px solid green;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.btn-wrong{
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 9px; 
+    border: 1px solid red;
+    font-family: 'Courier New', Courier, monospace;
 }
 @keyframes shaker {
     0%, 10%{
