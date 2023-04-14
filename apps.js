@@ -47,21 +47,26 @@ let questions = [
     }
 ]
 
+//selecting buttons
 const btn1 = document.querySelector('#btn1');
 const btn2 = document.querySelector('#btn2');
 const btn3 = document.querySelector('#btn3');
 const btn4 = document.querySelector('#btn4');
-
+//selecting point and lives
 const lives = document.querySelector('.lives');
 const points = document.querySelector('.points');
-
+//selecting question 
 const question = document.querySelector('.mainQuestion')
-const strtBtn = document.querySelector('.startButton')
+//selecting win and lose case
+const winner = document.querySelector('.win');
+const loser = document.querySelector('.lose');
+//selecting question box
+const questionBox = document.querySelector('.questionBox')
 
 window.addEventListener('load', theGame())
 
 
-let timeIn = setInterval(setQuestion, 1000)
+let timeIn = setInterval(gameController, 1000)
 
 function stopInterval(){
     clearInterval(timeIn)
@@ -70,8 +75,11 @@ function startInterval(){
     timeIn()
 }
 
-function setQuestion(){
-    if(questions.length >= 1){ 
+function gameController(){
+    if(questions.length > 0 && lives.textContent <= 0 && points.textContent < 9){
+        questionBox.className = 'hidden';
+        loser.style.display = 'flex';
+    }else if(questions.length >= 1){ 
     question.textContent = questions[0].que
     btn1.textContent = questions[0].options[0]
     btn2.textContent = questions[0].options[1]
@@ -81,7 +89,10 @@ function setQuestion(){
     btn2.className = 'btn';
     btn3.className = 'btn';
     btn4.className = 'btn';
-    }else if(questions.length <= 0 && lives.textContent > 0){
+    }else if(questions.length <= 0 && lives.textContent > 0 && points.textContent == 9){
+        questionBox.className = 'hidden';
+        winner.style.display = 'flex';
+    }else if(questions.length <= 0 && lives.textContent > 0 && points.textContent < 9){
         question.textContent = `You scored ${points.textContent}/9 !`
         btn1.className = 'hidden'
         btn2.className = 'hidden'
@@ -89,6 +100,7 @@ function setQuestion(){
         btn4.className = 'hidden'
         stopInterval()
     }else{
+        
         stopInterval()
     }
 
@@ -99,8 +111,7 @@ function theGame(){
     points.textContent;
 
     
-    setQuestion();
-    
+    gameController();
     
     btn1.addEventListener('click', () => {
         if(btn1.textContent == questions[0].answer){
@@ -165,7 +176,6 @@ function theGame(){
             stopInterval()
         }
     })
-    
     
         
 }
