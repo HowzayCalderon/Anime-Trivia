@@ -81,82 +81,93 @@ function setQuestion(){
     btn2.className = 'btn';
     btn3.className = 'btn';
     btn4.className = 'btn';
+    }else if(questions.length <= 0 && lives.textContent > 0){
+        question.textContent = `You scored ${points.textContent}/9 !`
+        btn1.className = 'hidden'
+        btn2.className = 'hidden'
+        btn3.className = 'hidden'
+        btn4.className = 'hidden'
+        stopInterval()
     }else{
-        console.log('done');
         stopInterval()
     }
 
 }
 function theGame(){
-    lives.textContent = 4;
-    points.textContent = 0
-    setQuestion();
-
-        
-        btn1.addEventListener('click', () => {
-            if(btn1.textContent == questions[0].answer){
-                btn1.className = 'btn-correct';
-                points.textContent++;
-                questions.shift();
-                startInterval()
-                stopInterval()
-            }else{
-                btn1.className = 'btn-wrong';
-                questions.shift();
-                startInterval()
-                lives.textContent--
-                stopInterval();
-            }
-        })
-
-        btn2.addEventListener('click', () => {
-            if(btn2.textContent == questions[0].answer){
-                btn2.className = 'btn-correct';
-                points.textContent++;
-                questions.shift();
-                startInterval()
-                stopInterval()
-            }else{
-                btn2.className = 'btn-wrong';
-                lives.textContent--
-                questions.shift();
-                startInterval()
-                stopInterval()
-            }
-        })
-
-        btn3.addEventListener('click', () => {
-            if(btn3.textContent == questions[0].answer){
-                btn3.className = 'btn-correct';
-                points.textContent++;
-                questions.shift();
-                startInterval()
-                stopInterval()
-            }else{
-                btn3.className = 'btn-wrong';
-                lives.textContent--
-                questions.shift();
-                startInterval()
-                stopInterval()
-            }
-        })
-
-        btn4.addEventListener('click', () => {
-            if(btn4.textContent == questions[0].answer){
-                btn4.className = 'btn-correct';
-                points.textContent++;
-                questions.shift();
-                startTimeOut()
-                stopTimeOut();
-            }else{
-                btn4.className = 'btn-wrong';
-                lives.textContent--
-                questions.shift();
-                startInterval()
-                stopInterval()
-            }
-        })
     
+    lives.textContent = 4;
+    points.textContent;
+
+    
+    setQuestion();
+    
+    
+    btn1.addEventListener('click', () => {
+        if(btn1.textContent == questions[0].answer){
+            btn1.className = 'btn-correct';
+            points.textContent++
+            questions.shift();
+            startInterval()
+            stopInterval()
+        }else{
+            btn1.className = 'btn-wrong';
+            lives.textContent--
+            questions.shift();
+            startInterval()
+            stopInterval();
+        }
+    })
+    
+    btn2.addEventListener('click', () => {
+        if(btn2.textContent == questions[0].answer){
+            btn2.className = 'btn-correct';
+            points.textContent++;
+            questions.shift();
+            startInterval()
+            stopInterval()
+        }else{
+            btn2.className = 'btn-wrong';
+            lives.textContent--
+            questions.shift();
+            startInterval()
+            stopInterval()
+        }
+    })
+    
+    btn3.addEventListener('click', () => {
+        if(btn3.textContent == questions[0].answer){
+            btn3.className = 'btn-correct';
+            points.textContent++;
+            questions.shift();
+            startInterval()
+            stopInterval()
+        }else{
+            btn3.className = 'btn-wrong';
+            lives.textContent--
+            questions.shift();
+            startInterval()
+            stopInterval()
+        }
+    })
+    
+    btn4.addEventListener('click', () => {
+        if(btn4.textContent == questions[0].answer){
+            btn4.className = 'btn-correct';
+            points.textContent++;
+            questions.shift();
+            startTimeOut()
+            stopTimeOut();
+        }else{
+            btn4.className = 'btn-wrong';
+            lives.textContent--
+            questions.shift();
+            startInterval()
+            stopInterval()
+        }
+    })
+    
+    
+        
 }
 
 // when you're out of questions you get an infinite loop, figure out why and stop it 
