@@ -60,89 +60,100 @@ const strtBtn = document.querySelector('.startButton')
 
 window.addEventListener('load', theGame())
 
-function setQuestion(){
-    questions.length <= 0 ? console.log('done') :
-    question.textContent = questions[0].que;
-    btn1.textContent = questions[0].options[0]
-    btn2.textContent = questions[0].options[1]
-    btn3.textContent = questions[0].options[2]
-    btn4.textContent = questions[0].options[3]
 
-    btn1.className = 'btn';
-    btn2.className = 'btn';
-    btn3.className = 'btn';
-    btn4.className = 'btn';
+let timeIn = setInterval(setQuestion, 1000)
+
+function stopInterval(){
+    clearInterval(timeIn)
+}
+function startInterval(){
+    timeIn()
 }
 
-    
-function theGame(){
-    lives.textContent = 4;
-    points.textContent = 0
-
+function setQuestion(){
+    if(questions.length >= 1){ 
     question.textContent = questions[0].que
     btn1.textContent = questions[0].options[0]
     btn2.textContent = questions[0].options[1]
     btn3.textContent = questions[0].options[2]
     btn4.textContent = questions[0].options[3]
+    btn1.className = 'btn';
+    btn2.className = 'btn';
+    btn3.className = 'btn';
+    btn4.className = 'btn';
+    }else{
+        console.log('done');
+        stopInterval()
+    }
+
+}
+function theGame(){
+    lives.textContent = 4;
+    points.textContent = 0
+    setQuestion();
 
         
         btn1.addEventListener('click', () => {
             if(btn1.textContent == questions[0].answer){
-                questions.length <= 0 && points.textContent >= 8 ? console.log('Done') : 
                 btn1.className = 'btn-correct';
-                questions.shift();
-                setInterval(setQuestion, 1000)
                 points.textContent++;
+                questions.shift();
+                startInterval()
+                stopInterval()
             }else{
                 btn1.className = 'btn-wrong';
                 questions.shift();
-                setInterval(setQuestion, 1000);
+                startInterval()
                 lives.textContent--
+                stopInterval();
             }
         })
 
         btn2.addEventListener('click', () => {
             if(btn2.textContent == questions[0].answer){
-                questions.length <= 0 ? console.log('Done') : 
                 btn2.className = 'btn-correct';
+                points.textContent++;
                 questions.shift();
-                setInterval(setQuestion, 1000);
-                points.textContent ++;
+                startInterval()
+                stopInterval()
             }else{
                 btn2.className = 'btn-wrong';
-                questions.shift();
-                setInterval(setQuestion, 1000);
                 lives.textContent--
+                questions.shift();
+                startInterval()
+                stopInterval()
             }
         })
 
         btn3.addEventListener('click', () => {
             if(btn3.textContent == questions[0].answer){
-                questions.length <= 0 ? console.log('Done'):
                 btn3.className = 'btn-correct';
+                points.textContent++;
                 questions.shift();
-                setInterval(setQuestion, 1000);
-                points.textContent ++;
+                startInterval()
+                stopInterval()
             }else{
                 btn3.className = 'btn-wrong';
-                questions.shift();
-                setInterval(setQuestion, 1000);
                 lives.textContent--
+                questions.shift();
+                startInterval()
+                stopInterval()
             }
         })
 
         btn4.addEventListener('click', () => {
             if(btn4.textContent == questions[0].answer){
-                questions.length <= 0 ? console.log('Done') : 
                 btn4.className = 'btn-correct';
+                points.textContent++;
                 questions.shift();
-                setInterval(setQuestion, 1000);
-                points.textContent ++;
+                startTimeOut()
+                stopTimeOut();
             }else{
                 btn4.className = 'btn-wrong';
-                questions.shift();
-                setInterval(setQuestion, 1000);
                 lives.textContent--
+                questions.shift();
+                startInterval()
+                stopInterval()
             }
         })
     
