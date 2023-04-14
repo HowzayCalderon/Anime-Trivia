@@ -44,6 +44,10 @@ let questions = [
         que: "Who was the first person in possesion of the Colossal Titan?",
         answer: 'Bertholdt',
         options: ['Bertholdt', 'Armin', 'Eren Yeager', 'Mikasa']
+    },{
+        que: "Which of these anime characters is known for defeating oponents with a single blow?",
+        answer: 'Saitama',
+        options: ['Goku', 'Asta', 'The Founding Titan', 'Saitama']
     }
 ]
 
@@ -76,7 +80,7 @@ function startInterval(){
 }
 
 function gameController(){
-    if(questions.length > 0 && lives.textContent <= 0 && points.textContent < 9){
+    if(questions.length > 0 && lives.textContent <= 0 && points.textContent < 10){
         questionBox.className = 'hidden';
         loser.style.display = 'flex';
     }else if(questions.length >= 1){ 
@@ -89,11 +93,11 @@ function gameController(){
     btn2.className = 'btn';
     btn3.className = 'btn';
     btn4.className = 'btn';
-    }else if(questions.length <= 0 && lives.textContent > 0 && points.textContent == 9){
+    }else if(questions.length <= 0 && lives.textContent > 0 && points.textContent == 10){
         questionBox.className = 'hidden';
         winner.style.display = 'flex';
-    }else if(questions.length <= 0 && lives.textContent > 0 && points.textContent < 9){
-        question.textContent = `You scored ${points.textContent}/9 !`
+    }else if(questions.length <= 0 && lives.textContent > 0 && points.textContent < 10){
+        question.textContent = `You scored ${points.textContent}/10 !`
         btn1.className = 'hidden'
         btn2.className = 'hidden'
         btn3.className = 'hidden'

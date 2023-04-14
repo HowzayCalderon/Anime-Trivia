@@ -28,7 +28,8 @@ h1{
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
     border-radius: 20px;
     background-color: #E2D1F9;
     color: black;
@@ -64,32 +65,45 @@ h1{
     border-radius: 10px;
     padding: 10px;
 }
+
+.answerBox{
+    height: 30%;
+    width: 99%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
 .btn{
+    height: 30px;
+    width: 50%;
     border-radius: 10px;
     font-size: 20px;
-    padding: 9px;
     background-color:  rgb(34, 111, 166);
     border: 1px solid rgb(34, 111, 166);
     font-family: 'Courier New', Courier, monospace;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn-correct{
+    height: 30px;
+    width: 50%;
     background-color: green;
     color: white;
     border-radius: 10px;
     font-size: 20px;
-    padding: 9px;
     border: 1px solid green;
     font-family: 'Courier New', Courier, monospace;
 }
 
 .btn-wrong{
+    height: 30px;
+    width: 50%;
     background-color: red;
     color: white;
     border-radius: 10px;
     font-size: 20px;
-    padding: 9px; 
     border: 1px solid red;
     font-family: 'Courier New', Courier, monospace;
 }
@@ -185,3 +199,4 @@ h1{
 .hidden{
     display: none;
 }
+
