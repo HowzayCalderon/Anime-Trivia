@@ -48,7 +48,7 @@ let questions = [
        que: "Which of these anime characters is known for defeating oponents with a single blow?",
        answer: 'Saitama',
        options: ['Goku', 'Asta', 'The Founding Titan', 'Saitama']
-   }
+   }  
 ]
 
 //selecting buttons
