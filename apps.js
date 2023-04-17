@@ -1,175 +1,185 @@
-let player = {
-    points: 0,
-    lives: 4,
-    // increasePoints(){
-    //     player.points += 5
-    // },
-    // decreaseLives(){
-    //     player.lives--
-    // }
-}
-
-function increasePoints(){
-    player.points += 5
-}
-function decreaseLives(){
-    player.lives--
-}
-
-
 
 let questions = [
-     {
-        que: "What clan is Sasuke Uchiha part of?",
-        answer: "uchiha clan"
-    },
-     {
-        que: "Where is Rurouni Kenshin's scar located?",
-        answer: "cheek"
-    },
     {
-        que: "What is the name of the strongest demon from the 12 kizuki in Demon Slayer",
-        answer: "kokushibo"
-    },
+       que: "What clan is Sasuke Uchiha part of?",
+       options: ['Uchiha', 'Senju', 'Uzumaki', 'Hyuga'],
+       answer: 'Uchiha'
+   },
     {
-        que: "Who are the brothers that were given the name The Full Metal Alchemist",
-        answer: "elric brothers"
-    },
-    {
-        que: "What is the name of the talking cat Goku visits?",
-        answer: "korin"
-    },
-    {
-        que: "In which dragonball series was super saiyan 4 first seen?",
-        answer: "dragonball gt"
-    },
-    {
-        que: "Who was the One-Eyed Owl in Tokyo Ghoul?",
-        answer: "eto"
-    },
-    {
-        que: "Does Asta from Black Clover have any magic ability?",
-        answer: 'no'
-    },
-    {
-        que: "Which two people were in possesion of the Colossal Titan?",
-        answer: "armin, bertholdt"
-    }
+       que: "Where is Rurouni Kenshin's scar located?",
+       options: ['Thigh', 'Stomach', 'Arm', 'Cheek'],
+       answer: 'Cheek'
+   },
+   {
+       que: "What is the name of the strongest demon from the 12 kizuki in Demon Slayer",
+       options: ['Muzan', 'Kokushibo', 'Akaza', 'Enmu'],
+       answer: 'Kokushibo'
+   },
+   {
+       que: "Who are the brothers that were given the name The Full Metal Alchemist",
+       options: ['Elric Brothers', 'Paradox Brothers', 'Uchiha Brothers', 'Zoldyck Brothers'],
+       answer: 'Elric Brothers'
+   },
+   {
+       que: "What is the name of the talking cat Goku visits in DragonBall?",
+       options: ['Mishu', 'Garfield', 'Beerus', 'Korin'],
+       answer: "Korin"
+   },
+   {
+       que: "In which dragonball series was super saiyan 4 first seen?",
+       answer: 'DragonBall GT',
+       options: ['DragonBall', 'DragonBall Z', 'DragonBall GT', 'DragonBall Super']
+   },
+   {
+       que: "Who was the One-Eyed Owl in Tokyo Ghoul?",
+       answer: 'Eto',
+       options: ['Ken Kaneki', 'Eto', 'Yoshimura', 'Touka' ]
+   },
+   {
+       que: "What is Asta from Black Clover's magic ability?",
+       answer: 'Anti-Magic',
+       options: ['Barrier Magic', 'Creation Magic', 'Healing Magic', 'Anti-Magic']
+   },
+   {
+       que: "Who was the first person in possesion of the Colossal Titan?",
+       answer: 'Bertholdt',
+       options: ['Bertholdt', 'Armin', 'Eren Yeager', 'Mikasa']
+   },{
+       que: "Which of these anime characters is known for defeating oponents with a single blow?",
+       answer: 'Saitama',
+       options: ['Goku', 'Asta', 'The Founding Titan', 'Saitama']
+   }
 ]
-// reference for NEXT BUTTON
-let nextButton = document.querySelector('.Next')
 
-// questionBox variable to change color of box when answer is right/wrong
-let questionBox = document.querySelector(".questionBox")
+//selecting buttons
+const btn1 = document.querySelector('#btn1');
+const btn2 = document.querySelector('#btn2');
+const btn3 = document.querySelector('#btn3');
+const btn4 = document.querySelector('#btn4');
+//selecting point and lives
+const lives = document.querySelector('.lives');
+const points = document.querySelector('.points');
+//selecting question 
+const question = document.querySelector('.mainQuestion')
+//selecting win and lose case
+const winner = document.querySelector('.win');
+const loser = document.querySelector('.lose');
+//selecting question box
+const questionBox = document.querySelector('.questionBox')
 
-// mainQuestion is <p> element that will show the question 
-let mainQuestion = document.querySelector('.mainQuestion')
+window.addEventListener('load', theGame())
 
-// input is the variable storing reference to input element
-let input = document.getElementById('answer')
 
-// btn is variable storing reference to button element
-let btn = document.querySelector('.btn')
+let timeIn = setInterval(gameController, 1000)
 
-//this variable is for the win condition
-let youWon = document.querySelector('.win')
-
-//this variable is for the loss condition
-let youLose = document.querySelector('.lose')
-
-//index variable
-let index = 0
-
-// function to change question
-function changeQuestion(){
-    index++
-    mainQuestion.innerHTML= questions[index].que
-    questionBox.style.backgroundColor = "#E2D1F9"
-    input.value = ""
-    btn.style.display = ''
+function stopInterval(){
+   clearInterval(timeIn)
+}
+function startInterval(){
+   timeIn()
 }
 
-//this section is for tracking points
-let gamePoints = document.querySelector('.points')
-gamePoints.innerHTML = `${player.points}`
-
-// this section is for tracking lives
-let gameLives = document.querySelector('.lives')
-gameLives.innerHTML = `<i class="bi bi-heart-fill"></i>${player.lives}`
-
-
-window.addEventListener('load', function(){
-    mainQuestion.innerHTML = questions[index].que    
-    })
-
-    btn.addEventListener("click", function(){
-        gamePoints.innerHTML = `${player.points}`
-        gameLives.innerHTML = `<i class="bi bi-heart-fill"></i>${player.lives}`
+function gameController(){
+   if(questions.length > 0 && lives.textContent <= 0 && points.textContent < 10){
+       questionBox.className = 'hidden';
+       loser.style.display = 'flex';
+   }else if(questions.length >= 1){ 
+   question.textContent = questions[0].que
+   btn1.textContent = questions[0].options[0]
+   btn2.textContent = questions[0].options[1]
+   btn3.textContent = questions[0].options[2]
+   btn4.textContent = questions[0].options[3]
+   btn1.className = 'btn';
+   btn2.className = 'btn';
+   btn3.className = 'btn';
+   btn4.className = 'btn';
+   }else if(questions.length <= 0 && lives.textContent > 0 && points.textContent == 10){
+       questionBox.className = 'hidden';
+       winner.style.display = 'flex';
+   }else if(questions.length <= 0 && lives.textContent > 0 && points.textContent < 10){
+       question.textContent = `You scored ${points.textContent}/10 !`
+       btn1.className = 'hidden'
+       btn2.className = 'hidden'
+       btn3.className = 'hidden'
+       btn4.className = 'hidden'
+       stopInterval()
+   }else{
        
-        if(mainQuestion.innerHTML === questions[0].que && input.value.toLowerCase() == questions[0].answer){
-            increasePoints()
-            questionBox.style.backgroundColor = 'green' 
-            console.log(player.points) 
-            gamePoints.innerHTML = `${player.points}`  
-            gameLives.innerHTML = `<i class="bi bi-heart-fill"></i>${player.lives}`
-            btn.style.display = 'none'          
-        }else if(mainQuestion.innerHTML === questions[1].que && input.value.toLowerCase() === questions[1].answer){
-            questionBox.style.backgroundColor = 'green'
-            increasePoints()
-            gamePoints.innerHTML = `${player.points}`
-            btn.style.display = 'none'
-        }else if(mainQuestion.innerHTML === questions[2].que && input.value.toLowerCase() === questions[2].answer){
-            questionBox.style.backgroundColor = 'green'
-            increasePoints()
-            gamePoints.innerHTML = `${player.points}`
-            btn.style.display = 'none'
-        }else if(mainQuestion.innerHTML === questions[3].que && input.value.toLowerCase() === questions[3].answer){
-            questionBox.style.backgroundColor = 'green'
-            increasePoints()
-            gamePoints.innerHTML = `${player.points}`
-            btn.style.display = 'none'
-        }else if(mainQuestion.innerHTML === questions[4].que && input.value.toLowerCase() === questions[4].answer){
-            questionBox.style.backgroundColor = 'green'
-            increasePoints()
-            gamePoints.innerHTML = `${player.points}`
-            btn.style.display = 'none'
-        }else if(mainQuestion.innerHTML === questions[5].que && input.value.toLowerCase() === questions[5].answer){
-            questionBox.style.backgroundColor = 'green'
-            increasePoints()
-            gamePoints.innerHTML = `${player.points}`
-            btn.style.display = 'none'
-        }else if(mainQuestion.innerHTML === questions[6].que && input.value.toLowerCase() === questions[6].answer){
-            questionBox.style.backgroundColor = 'green'
-            increasePoints()
-            gamePoints.innerHTML = `${player.points}`
-            btn.style.display = 'none'
-        }else if(mainQuestion.innerHTML === questions[7].que && input.value.toLowerCase() === questions[7].answer){
-            questionBox.style.backgroundColor = 'green'
-            increasePoints()  
-            gamePoints.innerHTML = `${player.points}`  
-            btn.style.display = 'none'  
-        }else if(mainQuestion.innerHTML === questions[8].que && input.value.toLowerCase() === questions[8].answer){
-            questionBox.style.backgroundColor = 'green'
-            increasePoints()  
-            gamePoints.innerHTML = `${player.points}`  
-            btn.style.display = 'none'  
-        }else{
-            questionBox.style.backgroundColor = 'red'
-            decreaseLives()
-            gameLives.innerHTML = `<i class="bi bi-heart-fill"></i>${player.lives}`
-            btn.style.display = 'none'
-        };
-        if(player.points >= 25){
-            youWon.style.display = 'flex'
-            questionBox.style.display = 'none'
-        }else if(player.lives == 0){
-            youLose.style.display = 'flex'
-            questionBox.style.display = 'none'
-        }
-    })
+       stopInterval()
+   }
 
-    nextButton.addEventListener('click', changeQuestion)
-        
-    
-    
-    
+}
+function theGame(){
+   
+   lives.textContent = 4;
+   points.textContent;
+
+   
+   gameController();
+   
+   btn1.addEventListener('click', () => {
+       if(btn1.textContent == questions[0].answer){
+           btn1.className = 'btn-correct';
+           points.textContent++
+           questions.shift();
+           startInterval()
+           stopInterval()
+       }else{
+           btn1.className = 'btn-wrong';
+           lives.textContent--
+           questions.shift();
+           startInterval()
+           stopInterval();
+       }
+   })
+   
+   btn2.addEventListener('click', () => {
+       if(btn2.textContent == questions[0].answer){
+           btn2.className = 'btn-correct';
+           points.textContent++;
+           questions.shift();
+           startInterval()
+           stopInterval()
+       }else{
+           btn2.className = 'btn-wrong';
+           lives.textContent--
+           questions.shift();
+           startInterval()
+           stopInterval()
+       }
+   })
+   
+   btn3.addEventListener('click', () => {
+       if(btn3.textContent == questions[0].answer){
+           btn3.className = 'btn-correct';
+           points.textContent++;
+           questions.shift();
+           startInterval()
+           stopInterval()
+       }else{
+           btn3.className = 'btn-wrong';
+           lives.textContent--
+           questions.shift();
+           startInterval()
+           stopInterval()
+       }
+   })
+   
+   btn4.addEventListener('click', () => {
+       if(btn4.textContent == questions[0].answer){
+           btn4.className = 'btn-correct';
+           points.textContent++;
+           questions.shift();
+           startTimeOut()
+           stopTimeOut();
+       }else{
+           btn4.className = 'btn-wrong';
+           lives.textContent--
+           questions.shift();
+           startInterval()
+           stopInterval()
+       }
+   })
+   
+       
+}
